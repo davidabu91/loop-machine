@@ -5,8 +5,9 @@ import Loop from './components/Loop';
 import Slider from './components/Slider';
 import { loops } from './LoopFiles/index.js';
 import { FaPlay, FaStop } from 'react-icons/fa';
-import { ImLoop2 } from 'react-icons/im';
+import { ImLoop2, ImTerminal } from 'react-icons/im';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import Render from './components/Render.jsx';
 
 
 
@@ -14,6 +15,8 @@ function App() {
 
   const [playAudio, setPlayAudio] = useState(false);
   const [isLoop, setIsLoop] = useState(false);
+  const [sections, setSectios] = useState([{id:"slider"}, {id:"chanels"}, {id:"buttons"}]);
+
 
   const playButton = useRef();
   const loopButton = useRef();
@@ -33,23 +36,6 @@ function App() {
     setSectios(items);
   }
 
-  const header = { element: <Slider playAudio={playAudio} isLoop={isLoop} setPlayAudio={setPlayAudio} />, id: "slider" }
-  const chanels = {
-    element: <ChanelsContainer>{loops.map((loop, index) => {
-      return <Loop path={loop.path} color={loop.color} name={loop.name} key={index} playAudio={playAudio} isLoop={isLoop} />
-    })} </ChanelsContainer>, id: "chanels"
-  }
-  const buttons = {
-    element: <ButtomsContainer>
-      <Button onClick={() => setPlayAudio(true)} ref={playButton}><FaPlay /></Button>
-      <Button onClick={() => setPlayAudio(false)}><FaStop /></Button>
-      <Button onClick={() => setIsLoop(!isLoop)} ref={loopButton} ><ImLoop2 /></Button>
-    </ButtomsContainer>, id: "buttons"
-  }
-
-  const [sections, setSectios] = useState([header, chanels, buttons]);
-
-
 
 
   return (
@@ -67,7 +53,15 @@ function App() {
                     <Draggable draggableId={item.id} key={item.id} index={index}>
                       {(provider) => (
                         <div ref={provider.innerRef} {...provider.draggableProps} {...provider.dragHandleProps}>
-                          {item.element}
+                          {item.id === "slider" && <Slider playAudio={playAudio} isLoop={isLoop} setPlayAudio={setPlayAudio} />}
+                          {item.id === "chanels" && <ChanelsContainer>{loops.map((loop, index) => {
+                            return <Loop path={loop.path} color={loop.color} name={loop.name} key={index} playAudio={playAudio} isLoop={isLoop} />
+                          })} </ChanelsContainer>}
+                          {item.id === "buttons" && <ButtomsContainer>
+                            <Button onClick={() => setPlayAudio(true)} ref={playButton}><FaPlay /></Button>
+                            <Button onClick={() => setPlayAudio(false)}><FaStop /></Button>
+                            <Button onClick={() => setIsLoop(!isLoop)} ref={loopButton} ><ImLoop2 /></Button>
+                          </ButtomsContainer>}
                         </div>
                       )}
 
@@ -99,6 +93,7 @@ const ButtomsContainer = styled.div`
     align-items: stretch;
     width: 150px;
     margin-left: 45px;
+    margin-bottom: 20px;
 `
 const Layout = styled.div`
   align-items: center;
