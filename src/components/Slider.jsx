@@ -5,9 +5,6 @@ import ALL from '../LoopFiles/ALL TRACK.mp3';
 
 function Slider({playAudio, isLoop, setPlayAudio}) {
 
-
-
-
     const audioPlayer = useRef();
     const timeline = useRef();
 
@@ -36,8 +33,6 @@ function Slider({playAudio, isLoop, setPlayAudio}) {
     return <div>
         <RangeInput type="range" max="100" ref={timeline} backgroundSize={backgroundSize} />
         <audio src={ALL} onEnded={handlerOnEnded} muted ref={audioPlayer} onTimeUpdate={changTielinePosition} loop={isLoop}/>
-
-
     </div>;
 }
 
