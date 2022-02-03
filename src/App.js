@@ -7,7 +7,6 @@ import { loops } from './LoopFiles/index.js';
 import { FaPlay, FaStop } from 'react-icons/fa';
 import { ImLoop2, ImTerminal } from 'react-icons/im';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import Render from './components/Render.jsx';
 
 
 
