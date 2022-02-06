@@ -28,6 +28,6 @@ There are three parts to the application:
 The app was developed using two external libraries:
 1.	`React-icons` I've used for the buttons.
 2.	`Styled-components` I've used for the styling.
-3.	`react-beautiful-dnd` I've used for drag and drop abilities. This guide is a recommended resource if you want one [here](https://www.freecodecamp.org/news/how-to-add-drag-and-drop-in-react-with-react-beautiful-dnd/)
-As for the background svg, I use Hero Patterns, which is easy to use and highly recommended.[here](https://heropatterns.com/)
+3.	`react-beautiful-dnd` I've used for drag and drop abilities. This guide is a recommended resource if you want one [here](https://www.freecodecamp.org/news/how-to-add-drag-and-drop-in-react-with-react-beautiful-dnd/)\
+As for the background svg, I use Hero Patterns, which is easy to use and highly recommended [here](https://heropatterns.com/)
 
